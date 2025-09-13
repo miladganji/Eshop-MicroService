@@ -20,7 +20,7 @@ namespace IDPI.Api.Controllers.v1
         public async Task<IActionResult> Insert(UserCommand userCommand)
         {
             var res = await _mediator.Send(userCommand);
-            return Ok();
+            return Ok(res);
         }
     }
 }
