@@ -11,5 +11,7 @@ namespace IDP.Domain.Entities
     {
         public required string  Fullname { get; set; }
         public required string  NationalCode { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

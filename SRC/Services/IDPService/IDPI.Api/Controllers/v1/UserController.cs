@@ -1,4 +1,5 @@
-﻿using IDP.Application.Command.User;
+﻿using Asp.Versioning;
+using IDP.Application.Command.User;
 using IDPI.Api.Controllers.Base;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -6,7 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IDPI.Api.Controllers.v1
 {
-    [Route("api/v1/user")]
+    [ApiVersion(1)]
+    [ApiVersion(2)]
+   
+    [Route("api/v{v:apiversion}/users")]
     [ApiController]
     public class UserController : IBaseController
     {
