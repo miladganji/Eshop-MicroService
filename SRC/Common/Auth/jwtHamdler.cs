@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Auth
 {
-    public class JwtHandler : IJwtHandler
+    public class JwtHandler : IjwtHamdler
     {
         private readonly JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         private readonly JwtOptions _options;
@@ -31,14 +31,14 @@ namespace Auth
             _tokenValidationParameters = new TokenValidationParameters()
             {
                 ValidateAudience = false,
-                ValidIssuer = _options.Issuer,
+                ValidIssuer = _options.Issue,
                 IssuerSigningKey = _issuerSigningKey
             };
         }
         public JsonWebToken Create(Int64 userId)
         {
             var nowUtc = DateTime.UtcNow;
-            var expires = nowUtc.AddMinutes(_options.ExpiryMinutes);
+            var expires = nowUtc.AddMinutes(_options.ExpireMiniut);
             var centuryBegin = new DateTime(1970, 1, 1).ToUniversalTime();
             var exp = (long)(new TimeSpan(expires.Ticks - centuryBegin.Ticks).TotalMilliseconds);
             var now = (long)(new TimeSpan(nowUtc.Ticks - centuryBegin.Ticks).TotalMilliseconds);
@@ -46,7 +46,7 @@ namespace Auth
             var payload = new JwtPayload
             {
                 {"sub",userId },
-                {"iss", _options.Issuer },
+                {"iss", _options.Issue },
                 {"iat", now },
                 {"exp",exp },
                 {"unique_code",userId },

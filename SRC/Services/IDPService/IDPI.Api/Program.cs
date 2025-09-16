@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Auth;
 using IDP.Application.Command.User;
 using MediatR;
 using System.Reflection;
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(UserCommand).GetTypeInfo().Assembly);
+builder.Services.AddJwt(builder.Configuration);
 builder.Services.AddApiVersioning(options =>
 {
     options.DefaultApiVersion = new ApiVersion(1);

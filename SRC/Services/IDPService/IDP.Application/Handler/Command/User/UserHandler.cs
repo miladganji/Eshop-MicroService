@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDP.Application.Handler.User
+namespace IDP.Application.Handler.Command.User
 {
     public class UserHandler : IRequestHandler<UserCommand, bool>
     {
