@@ -14,6 +14,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(UserCommand).GetTypeInfo().Assembly);
 builder.Services.AddJwt(builder.Configuration);
+builder.Services.AddStackExchangeRedisCache(option => { 
+
+
+
+});
 builder.Services.AddApiVersioning(options =>
 {
     options.DefaultApiVersion = new ApiVersion(1);

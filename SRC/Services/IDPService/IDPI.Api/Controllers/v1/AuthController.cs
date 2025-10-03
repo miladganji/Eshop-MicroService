@@ -27,5 +27,18 @@ namespace IDPI.Api.Controllers.v1
             return Ok(res);
 
         }
+
+        /// <summary>
+        /// ثبت نام و ارسال کد به شماره موبایل
+        /// </summary>
+        /// <param name="authQuery"></param>
+        /// <returns></returns>
+        [HttpPost("RegisterAndSendOtp")]
+        public async Task<IActionResult> RegisterAndSendOtp([FromBody] AuthCommand authCommand)
+        {
+            var res = await _mediator.Send(authCommand);
+
+            return Ok(res);
+        }
     }
 }
